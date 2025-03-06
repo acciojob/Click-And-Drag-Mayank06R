@@ -1,4 +1,3 @@
-// Your code here.
 document.addEventListener('DOMContentLoaded', (event) => {
   const container = document.querySelector('.container');
   const cubes = document.querySelectorAll('.cube');
@@ -32,6 +31,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         selectedCube.style.left = `${x}px`;
         selectedCube.style.top = `${y}px`;
+
+        // Check if the container needs to scroll
+        if (x + selectedCube.offsetWidth / 2 > container.offsetWidth / 2) {
+          container.scrollLeft = x - container.offsetWidth / 2 + selectedCube.offsetWidth / 2;
+        } else {
+          container.scrollLeft = 0;
+        }
       }
     });
 
